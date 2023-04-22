@@ -4,7 +4,7 @@ import 'package:nutrition_study_front/layers/presentation/pages/splash/splash.da
 import '../../layers/presentation/pages/home/home.dart';
 
 final routers = GoRouter(
-  initialLocation: Home.route,
+  initialLocation: Splash.route,
   routes: <GoRoute>[
     GoRoute(
       name: Splash.name,

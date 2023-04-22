@@ -3,6 +3,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'core/routers/routers.dart';
+import 'layers/presentation/themes/myTheme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,8 +15,7 @@ void main() async {
     MaterialApp.router(
       routerConfig: routers,
       title: "POF Study",
-      //TODO: Build a theme
-      //theme: ,
+      theme: myTheme,
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
     ),

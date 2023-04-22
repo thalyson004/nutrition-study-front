@@ -39,45 +39,22 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.pinkAccent.withOpacity(0.10),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "POF",
-                style: GoogleFonts.luckiestGuy(
-                  fontSize: 60,
-                  color: Colors.blue,
-                  shadows: [
-                    Shadow(
-                      color: Colors.blue.shade900.withOpacity(0.1),
-                      offset: const Offset(5, 5),
-                      blurRadius: 0.5,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              Text(
-                "Pesquisa de Orçamentos Familiares",
-                style: GoogleFonts.luckiestGuy(
-                  fontSize: 30,
-                  color: Colors.red,
-                  shadows: [
-                    Shadow(
-                      color: Colors.blue.shade900.withOpacity(0.1),
-                      offset: const Offset(5, 5),
-                      blurRadius: 0.5,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "POF",
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Text(
+              "Pesquisa de Orçamentos Familiares",
+              style: Theme.of(context).textTheme.headline2,
+            )
+          ],
         ),
       ),
     );
