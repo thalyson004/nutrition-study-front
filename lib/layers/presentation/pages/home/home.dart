@@ -16,55 +16,72 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          Container(
-            width: 250,
-            color: Colors.pink,
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+                child: Container(
+                  width: 250,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 15,
+                left: 40,
+                child: Container(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("Recent projects"),
+                  ),
+                ),
+              ),
+            ],
           ),
           Expanded(
-            child: Container(
-              color: Colors.green,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(50, 100, 50, 50),
-                child: Column(
-                  // crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text("Name"),
-                            MyTextInput(
-                              controller: nameController,
-                              labelText: "Name",
-                            ),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text("Description"),
-                            MyTextInput(
-                              controller: descriptionController,
-                              labelText: "Description",
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(child: Container()),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text("Create"),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(50, 100, 50, 50),
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text("Name"),
+                          MyTextInput(
+                            controller: nameController,
+                            labelText: "Name",
+                          ),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text("Description"),
+                          MyTextInput(
+                            controller: descriptionController,
+                            labelText: "Description",
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(child: Container()),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Create"),
+                      ),
+                    ],
+                  )
+                ],
               ),
             ),
           ),

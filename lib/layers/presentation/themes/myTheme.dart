@@ -10,7 +10,7 @@ List<Shadow> simpleShadow = [
 ];
 
 final ThemeData myTheme = ThemeData(
-  scaffoldBackgroundColor: Colors.pinkAccent.withOpacity(0.10),
+  scaffoldBackgroundColor: Colors.white,
   textTheme: TextTheme(
     headline1: GoogleFonts.luckiestGuy(
       fontSize: 60,
