@@ -14,7 +14,7 @@ void main() async {
   runApp(
     MaterialApp.router(
       routerConfig: routers,
-      title: "POF Study",
+      title: "Diet Recommender",
       theme: myTheme,
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),

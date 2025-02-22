@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nutrition_study_front/layers/presentation/pages/project/project.dart';
 import 'package:nutrition_study_front/layers/presentation/widgets/MyTextInput.dart';
 
 class Home extends StatelessWidget {
@@ -76,7 +78,10 @@ class Home extends StatelessWidget {
                     children: [
                       Expanded(child: Container()),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          print("Tentou adicionar");
+                          GoRouter.of(context).replace(Project.route);
+                        },
                         child: Text("Create"),
                       ),
                     ],
