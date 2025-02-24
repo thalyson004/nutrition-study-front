@@ -10,14 +10,15 @@ List<Shadow> simpleShadow = [
 ];
 
 final ThemeData myTheme = ThemeData(
+  useMaterial3: true,
   scaffoldBackgroundColor: Colors.white,
   textTheme: TextTheme(
-    headline1: GoogleFonts.luckiestGuy(
+    titleLarge: GoogleFonts.luckiestGuy(
       fontSize: 60,
       color: Colors.blue,
       shadows: simpleShadow,
     ),
-    headline2: GoogleFonts.luckiestGuy(
+    titleMedium: GoogleFonts.luckiestGuy(
       fontSize: 30,
       color: Colors.red,
       shadows: simpleShadow,

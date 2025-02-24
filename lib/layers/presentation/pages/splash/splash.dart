@@ -45,14 +45,14 @@ class _SplashState extends State<Splash> {
           children: [
             Text(
               "POF",
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(
               height: 50,
             ),
             Text(
               "Pesquisa de Orçamentos Familiares",
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.titleMedium,
             )
           ],
         ),
