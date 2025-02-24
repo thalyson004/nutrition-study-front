@@ -28,6 +28,7 @@ class Project extends StatelessWidget {
         color: Colors.purple,
         child: Column(
           children: [
+            // Parte de cima
             Expanded(
                 flex: 1,
                 child: Container(
@@ -35,6 +36,7 @@ class Project extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      // Esquerda
                       Expanded(
                         child: Container(
                           color: Colors.pinkAccent,
@@ -120,20 +122,58 @@ class Project extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // Direita
                       Expanded(
                         child: Container(
                           color: Colors.green,
+                          // Graficos e gerar recomendação
                           child: Column(
                             children: [
+                              // Gráfico
                               Expanded(
                                   flex: 3,
                                   child: Container(
-                                    color: Colors.purpleAccent,
+                                    color: Colors.yellowAccent,
+                                    child: Row(
+                                      children: [
+                                        // Graficos
+                                        Expanded(
+                                            child: Container(
+                                          color: Colors.lightBlue,
+                                          child: Text(
+                                            "Gráfico",
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        )),
+                                        // Tipos satisfação
+                                        Container(
+                                          color: Colors.greenAccent,
+                                          width: 200,
+                                          child: Text(
+                                            "Tipo de satisfação",
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   )),
+                              // Gerar recomendação
                               Expanded(
                                   flex: 1,
-                                  child: Container(
-                                    color: Colors.deepOrangeAccent,
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 4,
+                                        child: Text(
+                                          "Gerar recomendação",
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Expanded(
+                                          flex: 1,
+                                          child:
+                                              Container(child: Text("Botão")))
+                                    ],
                                   )),
                             ],
                           ),
@@ -142,10 +182,41 @@ class Project extends StatelessWidget {
                     ],
                   ),
                 )),
+            // Parte de Baixo
             Expanded(
                 flex: 2,
                 child: Container(
                   color: Colors.blue,
+                  child: Row(
+                    children: [
+                      // Alimentos da dieta
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
+                      // Recomendações
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              color: Colors.red,
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                      child: Container(color: Colors.green)),
+                                  Container(
+                                    height: 50,
+                                  )
+                                ],
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
                 ))
           ],
         ),
