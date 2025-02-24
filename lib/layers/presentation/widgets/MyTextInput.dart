@@ -14,6 +14,7 @@ class MyTextInput extends StatefulWidget {
       bool autofocus = false,
       TextInputType? keyboardType,
       Function(String)? onChanged,
+      String label = "label",
       String? errorText})
       : _controller = controller,
         _labelText = labelText,
@@ -25,6 +26,7 @@ class MyTextInput extends StatefulWidget {
         _autofocus = autofocus,
         _keyboardType = keyboardType,
         _onChanged = onChanged,
+        _label = label,
         super(key: key);
 
   final TextEditingController _controller;
@@ -37,6 +39,7 @@ class MyTextInput extends StatefulWidget {
   final bool _autofocus;
   final TextInputType? _keyboardType;
   final Function(String)? _onChanged;
+  final String _label;
 
   @override
   State<MyTextInput> createState() => _MyTextInputState();
@@ -44,6 +47,8 @@ class MyTextInput extends StatefulWidget {
 
 class _MyTextInputState extends State<MyTextInput> {
   bool _obscurePassword = false;
+  final BorderRadius _borderRadius =
+      const BorderRadius.all(Radius.circular(2.0));
 
   @override
   void initState() {
@@ -53,102 +58,115 @@ class _MyTextInputState extends State<MyTextInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              Form(
-                key: widget._formKey,
-                child: TextFormField(
-                  validator: widget._validator,
-                  style: const TextStyle(
-                    color: Color(0xFFFFFFFF),
-                    fontSize: 16,
-                  ),
-                  autofocus: widget._autofocus,
-                  controller: widget._controller,
-                  onChanged: widget._onChanged,
-                  obscureText: _obscurePassword,
-                  keyboardType: widget._keyboardType,
-                  decoration: InputDecoration(
-                    errorText: widget._errorText != null ? "" : null,
-                    errorStyle: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.red,
-                    ),
-                    filled: true,
-                    fillColor: const Color(0xFF384686),
-                    disabledBorder: InputBorder.none,
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                      borderSide: BorderSide(
-                        style: BorderStyle.solid,
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      gapPadding: 20,
-                      borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                      borderSide: BorderSide(
-                        style: BorderStyle.solid,
-                        color: Color(0xFFBABDC0),
-                        width: 1,
-                      ),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                      borderSide: BorderSide(
-                        color: Color(0xFFBABDC0),
-                      ),
-                    ),
-                    errorBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                      ),
-                    ),
-                    hintText: widget._labelText,
-                    hintStyle: GoogleFonts.roboto(
-                      textStyle: TextStyle(
-                        color: widget._errorText == null
-                            ? Color(0xFFBABDC0)
-                            : Colors.red,
-                        fontSize: 16,
-                      ),
-                    ),
-                    prefix: const SizedBox(
-                      width: 10,
-                    ),
-                    suffixIcon: widget._isPassword
-                        ? Padding(
-                            padding: const EdgeInsets.only(right: 15),
-                            child: GestureDetector(
-                              child: Icon(
-                                _obscurePassword == true
-                                    ? FontAwesomeIcons
-                                        .eyeSlash //Icons.visibility_off_outlined
-                                    : FontAwesomeIcons.eye,
-                                color: const Color(0xFFFFFFFF),
-                                size: 18,
-                              ),
-                              onTap: () {
-                                setState(() {
-                                  _obscurePassword = !_obscurePassword;
-                                });
-                              },
+    return Row(
+      children: [
+        Text(widget._label),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    SizedBox(
+                      height: 30,
+                      child: Form(
+                        key: widget._formKey,
+                        child: TextFormField(
+                          validator: widget._validator,
+                          style: const TextStyle(
+                            color: Color(0xFFFFFFFF),
+                            fontSize: 16,
+                          ),
+                          autofocus: widget._autofocus,
+                          controller: widget._controller,
+                          onChanged: widget._onChanged,
+                          obscureText: _obscurePassword,
+                          keyboardType: widget._keyboardType,
+                          decoration: InputDecoration(
+                            errorText: widget._errorText != null ? "" : null,
+                            errorStyle: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.red,
                             ),
-                          )
-                        : null,
-                  ),
+                            contentPadding: const EdgeInsets.all(8),
+                            filled: true,
+                            fillColor:
+                                Colors.pink[50], //TODO: Add to a const variable
+                            disabledBorder: InputBorder.none,
+                            border: OutlineInputBorder(
+                              borderRadius: _borderRadius,
+                              borderSide: const BorderSide(
+                                style: BorderStyle.solid,
+                                color: Colors.white,
+                                width: 1,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              // gapPadding: 20,
+                              borderRadius: _borderRadius,
+                              borderSide: const BorderSide(
+                                style: BorderStyle.solid,
+                                color: Color(0xFFBABDC0),
+                                width: 1,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: _borderRadius,
+                              borderSide: const BorderSide(
+                                color: Color(0xFFBABDC0),
+                              ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: _borderRadius,
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                              ),
+                            ),
+                            hintText: widget._labelText,
+                            hintStyle: GoogleFonts.roboto(
+                              textStyle: TextStyle(
+                                color: widget._errorText == null
+                                    ? const Color(0xFFBABDC0)
+                                    : Colors.red,
+                                fontSize: 16,
+                              ),
+                            ),
+                            prefix: const SizedBox(
+                              width: 10,
+                            ),
+                            suffixIcon: widget._isPassword
+                                ? Padding(
+                                    padding: const EdgeInsets.only(right: 15),
+                                    child: GestureDetector(
+                                      child: Icon(
+                                        _obscurePassword == true
+                                            ? FontAwesomeIcons
+                                                .eyeSlash //Icons.visibility_off_outlined
+                                            : FontAwesomeIcons.eye,
+                                        color: const Color(0xFFFFFFFF),
+                                        size: 18,
+                                      ),
+                                      onTap: () {
+                                        setState(() {
+                                          _obscurePassword = !_obscurePassword;
+                                        });
+                                      },
+                                    ),
+                                  )
+                                : null,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -25,47 +25,63 @@ class Project extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        color: Colors.purple,
         child: Column(
           children: [
             // Parte de cima
             Expanded(
                 flex: 1,
-                child: Container(
-                  color: Colors.red,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       // Esquerda
                       Expanded(
                         child: Container(
-                          color: Colors.pinkAccent,
                           child: Column(
                             children: [
-                              Row(
-                                children: [
-                                  const Text("Name"),
-                                  MyTextInput(
-                                    controller: nameController,
-                                    labelText: "Name",
-                                  ),
-                                ],
+                              MyTextInput(
+                                label: "Name",
+                                controller: nameController,
+                                labelText: "Name",
+                              ),
+                              MyTextInput(
+                                label: "Description",
+                                controller: descriptionController,
+                                labelText: "Description",
                               ),
                               Row(
                                 children: [
-                                  const Text("Description"),
-                                  MyTextInput(
-                                    controller: descriptionController,
-                                    labelText: "Description",
+                                  Expanded(
+                                    flex: 1,
+                                    child: MyTextInput(
+                                      label: "Age",
+                                      controller: ageController,
+                                      labelText: "Age",
+                                    ),
                                   ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  const Text("Name"),
-                                  MyTextInput(
-                                    controller: nameController,
-                                    labelText: "Name",
+                                  Expanded(
+                                    flex: 1,
+                                    child: MyTextInput(
+                                      label: "Weight",
+                                      controller: weightController,
+                                      labelText: "Weight",
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: MyTextInput(
+                                      label: "Height",
+                                      controller: heightController,
+                                      labelText: "Height",
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: MyTextInput(
+                                      label: "Activity",
+                                      controller: activityController,
+                                      labelText: "Activity",
+                                    ),
                                   ),
                                 ],
                               ),

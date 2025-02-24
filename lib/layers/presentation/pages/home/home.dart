@@ -52,25 +52,17 @@ class Home extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text("Name"),
-                          MyTextInput(
-                            controller: nameController,
-                            labelText: "Name",
-                          ),
-                        ],
+                      MyTextInput(
+                        label: "Name",
+                        controller: nameController,
+                        labelText: "Name",
+                        onChanged: (text) {},
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text("Description"),
-                          MyTextInput(
-                            controller: descriptionController,
-                            labelText: "Description",
-                          ),
-                        ],
+                      MyTextInput(
+                        label: "Description",
+                        controller: descriptionController,
+                        labelText: "Description",
+                        onChanged: (text) {},
                       ),
                     ],
                   ),
