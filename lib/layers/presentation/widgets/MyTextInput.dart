@@ -60,7 +60,9 @@ class _MyTextInputState extends State<MyTextInput> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(widget._label),
+        Text(
+          widget._label,
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),

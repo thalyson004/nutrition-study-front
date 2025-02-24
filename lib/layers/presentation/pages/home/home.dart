@@ -36,7 +36,9 @@ class Home extends StatelessWidget {
                   color: Theme.of(context).scaffoldBackgroundColor,
                   child: const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text("Recent projects"),
+                    child: Text(
+                      "Recent projects",
+                    ),
                   ),
                 ),
               ),
