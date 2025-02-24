@@ -44,6 +44,8 @@ final ThemeData myTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(Colors.pink[200]),
+      foregroundColor: MaterialStateProperty.all(Colors.white),
       shape: MaterialStatePropertyAll(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

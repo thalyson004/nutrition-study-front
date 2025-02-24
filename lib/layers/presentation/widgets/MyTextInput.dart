@@ -76,7 +76,7 @@ class _MyTextInputState extends State<MyTextInput> {
                         child: TextFormField(
                           validator: widget._validator,
                           style: const TextStyle(
-                            color: Color(0xFFFFFFFF),
+                            color: Colors.black,
                             fontSize: 16,
                           ),
                           autofocus: widget._autofocus,
