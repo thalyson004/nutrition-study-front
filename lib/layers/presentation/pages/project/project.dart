@@ -1,28 +1,38 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../widgets/MyTextInput.dart';
+import '../home/home.dart';
 
-class Project extends StatelessWidget {
+class Project extends StatefulWidget {
   static String name = "project";
   static String route = "/$name";
 
   const Project({Key? key}) : super(key: key);
 
   @override
+  State<Project> createState() => _ProjectState();
+}
+
+class _ProjectState extends State<Project> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
+  TextEditingController activityController = TextEditingController();
+  TextEditingController graphController = TextEditingController();
+  TextEditingController satisfactionController = TextEditingController();
+
+  TextEditingController addFoodController = TextEditingController();
+  TextEditingController addTimeController = TextEditingController();
+  TextEditingController addGramsController = TextEditingController();
+
+  String? selectedValue;
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-    TextEditingController descriptionController = TextEditingController();
-    TextEditingController ageController = TextEditingController();
-    TextEditingController weightController = TextEditingController();
-    TextEditingController heightController = TextEditingController();
-    TextEditingController activityController = TextEditingController();
-    TextEditingController graphController = TextEditingController();
-    TextEditingController satisfactionController = TextEditingController();
-
-    TextEditingController addFoodController = TextEditingController();
-    TextEditingController addTimeController = TextEditingController();
-    TextEditingController addGramsController = TextEditingController();
-
     return Scaffold(
       body: Container(
         child: Column(
@@ -141,7 +151,6 @@ class Project extends StatelessWidget {
                       // Direita
                       Expanded(
                         child: Container(
-                          color: Colors.green,
                           // Graficos e gerar recomendação
                           child: Column(
                             children: [
@@ -156,20 +165,45 @@ class Project extends StatelessWidget {
                                         Expanded(
                                             child: Container(
                                           color: Colors.lightBlue,
-                                          child: Text(
+                                          child: const Text(
                                             "Gráfico",
                                             textAlign: TextAlign.center,
                                           ),
                                         )),
                                         // Tipos satisfação
                                         Container(
-                                          color: Colors.greenAccent,
-                                          width: 200,
-                                          child: Text(
-                                            "Tipo de satisfação",
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        )
+                                            color: Colors.greenAccent,
+                                            width: 200,
+                                            child: Column(
+                                              children: [
+                                                Container(color: Colors.green),
+                                                // DropdownMenu(
+                                                //     value: selectedValue,
+                                                //     items: const [
+                                                //       DropdownMenuItem(
+                                                //         child: Text("List"),
+                                                //         value: "list",
+                                                //       ),
+                                                //       DropdownMenuItem(
+                                                //         child: Text("Bars"),
+                                                //         value: "bars",
+                                                //       ),
+                                                //       DropdownMenuItem(
+                                                //         child: Text("Circle"),
+                                                //         value: "circle",
+                                                //       ),
+                                                //     ],
+                                                //     onChanged:
+                                                //         (String? selected) {
+                                                //       print(selected ??
+                                                //           "Não selecionado");
+                                                //       setState(() {
+                                                //         selectedValue =
+                                                //             selected;
+                                                //       });
+                                                //     })
+                                              ],
+                                            ))
                                       ],
                                     ),
                                   )),
@@ -179,16 +213,22 @@ class Project extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        flex: 4,
-                                        child: Text(
-                                          "Gerar recomendação",
-                                          textAlign: TextAlign.center,
+                                          flex: 4,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              log("Generate Recommendations");
+                                            },
+                                            child: const Text(
+                                                "Generate Recommendations"),
+                                          )),
+                                      ElevatedButton(
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                          backgroundColor: Colors.black26,
                                         ),
+                                        child: const Icon(Icons.settings),
                                       ),
-                                      Expanded(
-                                          flex: 1,
-                                          child:
-                                              Container(child: Text("Botão")))
                                     ],
                                   )),
                             ],
@@ -219,16 +259,39 @@ class Project extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                              color: Colors.red,
                               child: Column(
-                                children: [
-                                  Expanded(
-                                      child: Container(color: Colors.green)),
-                                  Container(
-                                    height: 50,
-                                  )
-                                ],
-                              )),
+                            children: [
+                              Expanded(child: Container(color: Colors.green)),
+                              Container(
+                                height: 50,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        GoRouter.of(context)
+                                            .replace(Home.route);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.red.shade400),
+                                      child: const Text("Return"),
+                                    ),
+                                    const SizedBox(width: 16),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        GoRouter.of(context)
+                                            .replace(Project.route);
+                                      },
+                                      child: Text("Save"),
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              Colors.green.shade400),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          )),
                         ),
                       ),
                     ],
