@@ -27,6 +27,11 @@ class _MyDropDownMenuState extends State<MyDropDownMenu> {
       child: DropdownMenu(
         initialSelection: widget._selectedValue,
         controller: widget._controller,
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFFBABDC0)),
+          ),
+        ),
         dropdownMenuEntries: widget._entries
             .map(
               (String entry) => DropdownMenuEntry<String>(
