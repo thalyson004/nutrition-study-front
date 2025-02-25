@@ -24,7 +24,7 @@ final ThemeData myTheme = ThemeData(
       shadows: simpleShadow,
     ),
   ),
-  colorScheme: const ColorScheme(
+  colorScheme: ColorScheme(
     brightness: Brightness.light,
     primary: Color(0xFFF0AF49),
     onPrimary: Colors.white,
@@ -33,7 +33,7 @@ final ThemeData myTheme = ThemeData(
     error: Color(0xFFFF3737),
     onError: Colors.white,
     // background: Color(0xFFF0AF49),
-    surface: Color(0xFFF0AF49),
+    surface: Colors.pink[50]!, //Color(0xFFF0AF49),
     onSurface: Colors.black,
     tertiary: Color(0xFF18AD00),
     onTertiary: Colors.white,

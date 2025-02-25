@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../widgets/MyDropDownMenu.dart';
 import '../../widgets/MyTextInput.dart';
 import '../home/home.dart';
 
@@ -22,14 +23,23 @@ class _ProjectState extends State<Project> {
   TextEditingController weightController = TextEditingController();
   TextEditingController heightController = TextEditingController();
   TextEditingController activityController = TextEditingController();
+  String? activitySelected;
+  final List<String> activityTypes = [
+    "Sedentary",
+    "Low active",
+    "Active",
+    "Very active",
+    "Vigorously Active",
+  ];
   TextEditingController graphController = TextEditingController();
+  String? graphSelected;
+  final List<String> graphTypes = ["List", "Bar", "Circle"];
+
   TextEditingController satisfactionController = TextEditingController();
 
   TextEditingController addFoodController = TextEditingController();
   TextEditingController addTimeController = TextEditingController();
   TextEditingController addGramsController = TextEditingController();
-
-  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +96,23 @@ class _ProjectState extends State<Project> {
                                       labelText: "Height",
                                     ),
                                   ),
-                                  Expanded(
-                                    child: MyTextInput(
-                                      label: "Activity",
-                                      controller: activityController,
-                                      labelText: "Activity",
-                                    ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "Activity",
+                                      ),
+                                      SizedBox(
+                                        width: 8,
+                                      ),
+                                      MyDropDownMenu(
+                                        selectedValue: activitySelected,
+                                        controller: activityController,
+                                        entries: activityTypes,
+                                      ),
+                                      SizedBox(
+                                        width: 8,
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -176,32 +197,19 @@ class _ProjectState extends State<Project> {
                                             width: 200,
                                             child: Column(
                                               children: [
-                                                Container(color: Colors.green),
-                                                // DropdownMenu(
-                                                //     value: selectedValue,
-                                                //     items: const [
-                                                //       DropdownMenuItem(
-                                                //         child: Text("List"),
-                                                //         value: "list",
-                                                //       ),
-                                                //       DropdownMenuItem(
-                                                //         child: Text("Bars"),
-                                                //         value: "bars",
-                                                //       ),
-                                                //       DropdownMenuItem(
-                                                //         child: Text("Circle"),
-                                                //         value: "circle",
-                                                //       ),
-                                                //     ],
-                                                //     onChanged:
-                                                //         (String? selected) {
-                                                //       print(selected ??
-                                                //           "Não selecionado");
-                                                //       setState(() {
-                                                //         selectedValue =
-                                                //             selected;
-                                                //       });
-                                                //     })
+                                                Container(
+                                                  height: 50,
+                                                  color: Colors.green,
+                                                ),
+                                                MyDropDownMenu(
+                                                  selectedValue: graphSelected,
+                                                  controller: graphController,
+                                                  entries: graphTypes,
+                                                ),
+                                                Container(
+                                                  height: 50,
+                                                  color: Colors.pinkAccent,
+                                                )
                                               ],
                                             ))
                                       ],
