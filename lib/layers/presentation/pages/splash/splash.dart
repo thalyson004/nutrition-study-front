@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../home/home.dart';
 
 class Splash extends StatefulWidget {
   static String name = "splash";
   static String route = "/";
-  const Splash({Key? key}) : super(key: key);
+  const Splash({super.key});
 
   @override
   State<Splash> createState() => _SplashState();
@@ -19,11 +18,14 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
 
+    loading(context);
+  }
+
+  Future<void> loading(BuildContext context) async {
     // EasyLoading.show(status: "Loading");
-    Future.delayed(const Duration(seconds: 3)).then((value) async {
-      await EasyLoading.dismiss(animation: false);
-      context.go(Home.route);
-    });
+    await Future.delayed(const Duration(seconds: 3));
+    await EasyLoading.dismiss(animation: false);
+    if (context.mounted) context.go(Home.route);
   }
 
   @override

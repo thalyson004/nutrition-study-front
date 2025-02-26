@@ -1,14 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition_study_front/layers/presentation/pages/project/project.dart';
-import 'package:nutrition_study_front/layers/presentation/widgets/MyTextInput.dart';
+import 'package:nutrition_study_front/layers/presentation/widgets/my_text_input.dart';
 
 class Home extends StatelessWidget {
   static String name = "home";
   static String route = "/$name";
 
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +74,7 @@ class Home extends StatelessWidget {
                       Expanded(child: Container()),
                       ElevatedButton(
                         onPressed: () {
-                          print("Tentou adicionar");
+                          log("Tentou adicionar");
                           GoRouter.of(context).replace(Project.route);
                         },
                         child: Text("Create"),

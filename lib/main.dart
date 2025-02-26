@@ -3,7 +3,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'core/routers/routers.dart';
-import 'layers/presentation/themes/myTheme.dart';
+import 'layers/presentation/themes/my_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +35,7 @@ void configLoading() {
     ..backgroundColor = Colors.green
     ..indicatorColor = Colors.yellow
     ..textColor = Colors.yellow
-    ..maskColor = Colors.blue.withOpacity(0.5)
+    ..maskColor = Colors.blue.withValues(alpha: 0.5)
     ..userInteractions = true
     ..dismissOnTap = false;
 }

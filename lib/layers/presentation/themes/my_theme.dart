@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 List<Shadow> simpleShadow = [
   Shadow(
-    color: Colors.blue.shade900.withOpacity(0.1),
+    color: Colors.blue.shade900.withValues(alpha: 0.1),
     offset: const Offset(3, 3),
     blurRadius: 0.5,
   ),
@@ -44,15 +44,15 @@ final ThemeData myTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.all(Colors.pink[200]),
-      foregroundColor: MaterialStateProperty.all(Colors.white),
-      shape: MaterialStatePropertyAll(
+      backgroundColor: WidgetStateProperty.all(Colors.pink[200]),
+      foregroundColor: WidgetStateProperty.all(Colors.white),
+      shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      elevation: const MaterialStatePropertyAll(5),
-      textStyle: MaterialStatePropertyAll(
+      elevation: const WidgetStatePropertyAll(5),
+      textStyle: WidgetStatePropertyAll(
         GoogleFonts.poppins(
           fontSize: 18,
           fontWeight: FontWeight.w500,

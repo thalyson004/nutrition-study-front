@@ -1,12 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class MyDropDownMenu extends StatefulWidget {
-  String? _selectedValue;
-  TextEditingController _controller;
-  List<String> _entries;
+  final String? _selectedValue;
+  final TextEditingController _controller;
+  final List<String> _entries;
 
-  MyDropDownMenu(
+  const MyDropDownMenu(
       {super.key,
       required String? selectedValue,
       required TextEditingController controller,
@@ -20,19 +21,31 @@ class MyDropDownMenu extends StatefulWidget {
 }
 
 class _MyDropDownMenuState extends State<MyDropDownMenu> {
+  String? _selectedValue;
+  TextEditingController _controller = TextEditingController();
+  List<String> _entries = [];
+
+  @override
+  void initState() {
+    _selectedValue = widget._selectedValue;
+    _controller = widget._controller;
+    _entries = widget._entries;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.pink[50],
       child: DropdownMenu(
-        initialSelection: widget._selectedValue,
-        controller: widget._controller,
+        initialSelection: _selectedValue,
+        controller: _controller,
         inputDecorationTheme: InputDecorationTheme(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xFFBABDC0)),
           ),
         ),
-        dropdownMenuEntries: widget._entries
+        dropdownMenuEntries: _entries
             .map(
               (String entry) => DropdownMenuEntry<String>(
                 label: entry,
@@ -41,9 +54,9 @@ class _MyDropDownMenuState extends State<MyDropDownMenu> {
             )
             .toList(),
         onSelected: (String? selected) {
-          print(selected ?? "Não selecionado");
+          log(selected ?? "Não selecionado");
           setState(() {
-            widget._selectedValue = selected;
+            _selectedValue = selected;
           });
         },
       ),

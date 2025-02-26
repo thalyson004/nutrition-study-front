@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyTextInput extends StatefulWidget {
   const MyTextInput(
-      {Key? key,
+      {super.key,
       required TextEditingController controller,
       required String labelText,
       String? infoText,
@@ -18,7 +18,7 @@ class MyTextInput extends StatefulWidget {
       String? errorText})
       : _controller = controller,
         _labelText = labelText,
-        _infoText = infoText,
+        // _infoText = infoText,
         _isPassword = isPassword,
         _validator = validator,
         _formKey = formKey,
@@ -26,12 +26,11 @@ class MyTextInput extends StatefulWidget {
         _autofocus = autofocus,
         _keyboardType = keyboardType,
         _onChanged = onChanged,
-        _label = label,
-        super(key: key);
+        _label = label;
 
   final TextEditingController _controller;
   final String _labelText;
-  final String? _infoText;
+  // final String? _infoText;
   final bool _isPassword;
   final FormFieldValidator<String>? _validator;
   final GlobalKey<FormState>? _formKey;
