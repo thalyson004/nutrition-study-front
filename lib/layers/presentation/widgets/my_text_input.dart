@@ -67,6 +67,7 @@ class _MyTextInputState extends State<MyTextInput> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Stack(
                   children: [
