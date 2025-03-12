@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nutrition_study_front/layers/data/api/nutrition_api.dart';
 
 import '../../widgets/add_meal.dart';
+import '../../widgets/diet.dart';
 import '../../widgets/my_drop_down_menu.dart';
 import '../../widgets/my_text_input.dart';
 import '../../widgets/nutrients_graph.dart';
@@ -242,12 +243,13 @@ class _ProjectState extends State<Project> {
             child: Container(
               color: Colors.blue,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Alimentos da dieta
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(color: Colors.red),
+                      child: Diet(),
                     ),
                   ),
                   // Recomendações

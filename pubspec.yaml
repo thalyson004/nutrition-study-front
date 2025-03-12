@@ -20,6 +20,7 @@ dependencies:
   window_manager: ^0.4.3
   font_awesome_flutter: ^10.4.0
   fl_chart: ^0.70.2
+  data_table_2: ^2.5.18
 
 dev_dependencies:
   flutter_test:
