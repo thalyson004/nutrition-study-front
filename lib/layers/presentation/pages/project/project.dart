@@ -140,14 +140,19 @@ class _ProjectState extends State<Project> {
                                 ),
                               ),
                               Positioned(
-                                top: -5,
+                                top: -8,
                                 left: 10,
                                 child: Container(
                                   color:
                                       Theme.of(context).scaffoldBackgroundColor,
                                   child: const Padding(
                                     padding: EdgeInsets.all(6.0),
-                                    child: Text("Add"),
+                                    child: Text(
+                                      "Add",
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
