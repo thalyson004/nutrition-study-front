@@ -5,19 +5,18 @@ import 'my_drop_down_menu.dart';
 import 'my_text_input.dart';
 
 class AddMeal extends StatefulWidget {
-  TextEditingController _mealController;
-  TextEditingController _timeController;
-  TextEditingController _quantityController;
+  final TextEditingController _mealController;
+  final TextEditingController _timeController;
+  final TextEditingController _quantityController;
 
   AddMeal({
-    Key? key,
+    super.key,
     TextEditingController? mealController,
     TextEditingController? timeController,
     TextEditingController? quantityController,
   })  : _mealController = mealController ?? TextEditingController(),
         _timeController = timeController ?? TextEditingController(),
-        _quantityController = quantityController ?? TextEditingController(),
-        super(key: key);
+        _quantityController = quantityController ?? TextEditingController();
 
   @override
   State<AddMeal> createState() => _AddMealState();
