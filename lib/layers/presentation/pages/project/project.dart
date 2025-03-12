@@ -218,9 +218,13 @@ class _ProjectState extends State<Project> {
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
                                   shape: const CircleBorder(),
-                                  backgroundColor: Colors.black26,
+                                  backgroundColor: Colors.pink,
+                                  shadowColor: Colors.black,
                                 ),
-                                child: const Icon(Icons.settings),
+                                child: const Icon(
+                                  Icons.settings,
+                                  color: Colors.white,
+                                ),
                               ),
                             ],
                           ),

@@ -57,9 +57,18 @@ class _AddMealState extends State<AddMeal> {
           ),
         ),
         Container(
-          color: Colors.yellowAccent,
-          width: 25,
-          height: 25,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              shape: const CircleBorder(),
+              backgroundColor: Colors.pink,
+              shadowColor: Colors.black,
+            ),
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+          ),
         ),
       ],
     );
