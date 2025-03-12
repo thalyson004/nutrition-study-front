@@ -2,9 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'my_drop_down_menu.dart';
+import 'my_text_input.dart';
 
 class AddMeal extends StatefulWidget {
-  const AddMeal({Key? key}) : super(key: key);
+  TextEditingController _mealController;
+  TextEditingController _timeController;
+  TextEditingController _quantityController;
+
+  AddMeal({
+    Key? key,
+    TextEditingController? mealController,
+    TextEditingController? timeController,
+    TextEditingController? quantityController,
+  })  : _mealController = mealController ?? TextEditingController(),
+        _timeController = timeController ?? TextEditingController(),
+        _quantityController = quantityController ?? TextEditingController(),
+        super(key: key);
 
   @override
   State<AddMeal> createState() => _AddMealState();
@@ -12,7 +25,6 @@ class AddMeal extends StatefulWidget {
 
 class _AddMealState extends State<AddMeal> {
   List<String> meals = ["Carne", "leite", "Queijo", "Arroz"];
-  TextEditingController mealController = TextEditingController();
   String mealSelected = "Carne";
 
   @override
@@ -24,19 +36,25 @@ class _AddMealState extends State<AddMeal> {
             padding: const EdgeInsets.all(8.0),
             child: MyDropDownMenu(
               selectedValue: mealSelected,
-              controller: mealController,
+              controller: widget._mealController,
               entries: meals,
               expand: true,
             ),
           ),
         ),
-        Container(
-          color: Colors.orange,
-          width: 100,
+        Expanded(
+          child: MyTextInput(
+            label: "Time",
+            controller: widget._timeController,
+            labelText: "Time",
+          ),
         ),
-        Container(
-          color: Colors.brown,
-          width: 100,
+        Expanded(
+          child: MyTextInput(
+            label: "Quantity",
+            controller: widget._quantityController,
+            labelText: "Quantity",
+          ),
         ),
         Container(
           color: Colors.yellowAccent,
