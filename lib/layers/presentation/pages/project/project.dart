@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition_study_front/layers/data/api/nutrition_api.dart';
 
+import '../../widgets/add_meal.dart';
 import '../../widgets/my_drop_down_menu.dart';
 import '../../widgets/my_text_input.dart';
 import '../../widgets/nutrients_graph.dart';
@@ -135,26 +136,7 @@ class _ProjectState extends State<Project> {
                                   decoration: BoxDecoration(
                                     border: Border.all(color: Colors.black),
                                   ),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Container(color: Colors.blue),
-                                      ),
-                                      Container(
-                                        color: Colors.orange,
-                                        width: 100,
-                                      ),
-                                      Container(
-                                        color: Colors.brown,
-                                        width: 100,
-                                      ),
-                                      Container(
-                                        color: Colors.yellowAccent,
-                                        width: 25,
-                                        height: 25,
-                                      ),
-                                    ],
-                                  ),
+                                  child: AddMeal(),
                                 ),
                               ),
                               Positioned(
