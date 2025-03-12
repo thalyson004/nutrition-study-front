@@ -194,6 +194,7 @@ class _ProjectState extends State<Project> {
                               Expanded(
                                   child: NutrientsGraph(
                                 nutrients: nutrients,
+                                nutrientsRecommended: nutrients,
                               )),
                               // Tipos satisfação
                               Container(
@@ -324,8 +325,14 @@ class NutrientsGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(_nutrients.toString()),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: _nutrients!.entries.map((element) {
+          return Text(
+              "${element.key}: ${element.value} / ${_nutrientsRecommended![element.key]}");
+        }).toList(),
+      ),
     );
   }
 }
