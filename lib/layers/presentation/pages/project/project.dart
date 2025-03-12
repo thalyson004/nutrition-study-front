@@ -44,13 +44,6 @@ class _ProjectState extends State<Project> {
 
   Map<String, double>? nutrients;
 
-  final List<ChartData> chartData = [
-    ChartData('Proteina', 25, '30%'),
-    ChartData('Carboitrato', 38, '80%'),
-    ChartData('Vitamina C', 34, '60%'),
-    ChartData('Vitamina D', 52, '20%'),
-  ];
-
   @override
   void initState() {
     initVariables();
@@ -336,11 +329,4 @@ class NutrientsGraph extends StatelessWidget {
       ),
     );
   }
-}
-
-class ChartData {
-  ChartData(this.name, this.value, this.percent);
-  final String name;
-  final double? value;
-  final String percent;
 }
