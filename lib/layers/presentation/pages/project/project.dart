@@ -197,24 +197,25 @@ class _ProjectState extends State<Project> {
                                 nutrientsRecommended: nutrients,
                               )),
                               // Tipos satisfação
-                              Container(
-                                color: Colors.greenAccent,
-                                width: 200,
-                                child: Column(
-                                  children: [
-                                    Container(height: 50, color: Colors.green),
-                                    MyDropDownMenu(
-                                      selectedValue: graphSelected,
-                                      controller: graphController,
-                                      entries: graphTypes,
-                                    ),
-                                    Container(
-                                      height: 50,
-                                      color: Colors.pinkAccent,
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              //TODO: Selecionar tipo de gráfico
+                              // Container(
+                              //   color: Colors.greenAccent,
+                              //   width: 200,
+                              //   child: Column(
+                              //     children: [
+                              //       Container(height: 50, color: Colors.green),
+                              //       MyDropDownMenu(
+                              //         selectedValue: graphSelected,
+                              //         controller: graphController,
+                              //         entries: graphTypes,
+                              //       ),
+                              //       Container(
+                              //         height: 50,
+                              //         color: Colors.pinkAccent,
+                              //       ),
+                              //     ],
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
