@@ -16,8 +16,14 @@ class _DietState extends State<Diet> {
 
   @override
   void initState() {
-    for (int i = 0; i < 50; i++) {
-      setState(() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (rows.length == 0) {
+      rows.clear();
+      for (int i = 0; i < 50; i++) {
         rows.add(
           DataRow2(
             cells: <DataCell>[
@@ -28,9 +34,12 @@ class _DietState extends State<Diet> {
             ],
           ),
         );
+      }
+      setState(() {
+        rows = rows;
       });
     }
-    super.initState();
+    super.didChangeDependencies();
   }
 
   void onSort(int columnIndex, bool ascending) {
@@ -50,33 +59,25 @@ class _DietState extends State<Diet> {
       sortAscending: isAscending,
       columns: [
         DataColumn2(
-          label: Expanded(
-            child: Text('Meal', style: TextStyle(fontStyle: FontStyle.italic)),
+          label: Text('Meal', style: TextStyle(fontStyle: FontStyle.italic)),
+          onSort: onSort,
+        ),
+        DataColumn2(
+          label: Text(
+            'Time',
+            style: TextStyle(fontStyle: FontStyle.italic),
           ),
           onSort: onSort,
         ),
         DataColumn2(
-          label: Expanded(
-            child: Text(
-              'Time',
-              style: TextStyle(fontStyle: FontStyle.italic),
-            ),
+          label: Text(
+            'Grams',
+            style: TextStyle(fontStyle: FontStyle.italic),
           ),
           onSort: onSort,
         ),
         DataColumn2(
-          label: Expanded(
-            child: Text(
-              'Grams',
-              style: TextStyle(fontStyle: FontStyle.italic),
-            ),
-          ),
-          onSort: onSort,
-        ),
-        DataColumn2(
-          label: Expanded(
-              child: Text('Options',
-                  style: TextStyle(fontStyle: FontStyle.italic))),
+          label: Text('Options', style: TextStyle(fontStyle: FontStyle.italic)),
         ),
       ],
       rows: rows,

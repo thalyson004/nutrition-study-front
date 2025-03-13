@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -45,20 +46,26 @@ class _ProjectState extends State<Project> {
   TextEditingController addTimeController = TextEditingController();
   TextEditingController addGramsController = TextEditingController();
 
-  Map<String, double>? nutrients;
+  Map<String, double>? nutrients = <String, double>{};
 
   @override
   void initState() {
-    initVariables();
     super.initState();
+
+    initVariables();
   }
 
   Future<void> initVariables() async {
-    var tempNutrients = await NutritionAPI.getNutrientsQuantities();
-    setState(() {
-      nutrients = tempNutrients;
-    });
-    print(nutrients);
+    NutritionAPI.getNutrientsQuantities().then(
+      (ans) {
+        setState(
+          () {
+            nutrients = ans;
+          },
+        );
+      },
+    );
+    // print(nutrients);
   }
 
   @override
@@ -174,10 +181,11 @@ class _ProjectState extends State<Project> {
                             children: [
                               // Graficos
                               Expanded(
-                                  child: NutrientsGraph(
-                                nutrients: nutrients,
-                                nutrientsRecommended: nutrients,
-                              )),
+                                child: NutrientsGraph(
+                                  nutrients: nutrients,
+                                  nutrientsRecommended: nutrients,
+                                ),
+                              ),
                               // Tipos satisfação
                               //TODO: Selecionar tipo de gráfico
                               // Container(
@@ -240,58 +248,62 @@ class _ProjectState extends State<Project> {
           // Parte de Baixo
           Expanded(
             flex: 2,
-            child: Container(
-              color: Colors.blue,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Alimentos da dieta
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Diet(),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Alimentos da dieta
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Expanded(child: Diet()),
+                        SizedBox(
+                          height: 50,
+                        )
+                      ],
                     ),
                   ),
-                  // Recomendações
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Expanded(child: Container(color: Colors.green)),
-                          SizedBox(
-                            height: 50,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    GoRouter.of(context).replace(Home.route);
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.red.shade400,
-                                  ),
-                                  child: const Text("Return"),
+                ),
+                // Recomendações
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Expanded(child: Container(color: Colors.green)),
+                        SizedBox(
+                          height: 50,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  GoRouter.of(context).replace(Home.route);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red.shade400,
                                 ),
-                                const SizedBox(width: 16),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    GoRouter.of(context).replace(Project.route);
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.green.shade400,
-                                  ),
-                                  child: Text("Save"),
+                                child: const Text("Return"),
+                              ),
+                              const SizedBox(width: 16),
+                              ElevatedButton(
+                                onPressed: () {
+                                  GoRouter.of(context).replace(Project.route);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green.shade400,
                                 ),
-                              ],
-                            ),
+                                child: Text("Save"),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
