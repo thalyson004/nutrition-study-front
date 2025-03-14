@@ -11,6 +11,7 @@ import '../../widgets/diet.dart';
 import '../../widgets/my_drop_down_menu.dart';
 import '../../widgets/my_text_input.dart';
 import '../../widgets/nutrients_graph.dart';
+import '../../widgets/satisfaction.dart';
 import '../home/home.dart';
 
 class Project extends StatefulWidget {
@@ -230,38 +231,8 @@ class _ProjectState extends State<Project> {
                                 ),
                               ),
                               Expanded(
-                                child: Column(
-                                  children: [
-                                    Expanded(
-                                      child: Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          SizedBox.square(
-                                            dimension: 112,
-                                            child: CircularProgressIndicator(
-                                              value: satisfaction,
-                                              color: Colors.green,
-                                              strokeWidth: 24.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            '${satisfaction}%',
-                                            style: const TextStyle(
-                                              fontSize: 28.0,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Text(
-                                      "Satisfaction",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
+                                child: Satisfaction(
+                                  satisfaction: satisfaction,
                                 ),
                               ),
                               // Tipos satisfação
@@ -372,7 +343,7 @@ class _ProjectState extends State<Project> {
                                   GoRouter.of(context).replace(Home.route);
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red.shade400,
+                                  backgroundColor: Colors.pink[200],
                                 ),
                                 child: const Text("Return"),
                               ),
@@ -382,7 +353,7 @@ class _ProjectState extends State<Project> {
                                   GoRouter.of(context).replace(Project.route);
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.green.shade400,
+                                  backgroundColor: Colors.pink,
                                 ),
                                 child: Text("Save"),
                               ),
