@@ -74,7 +74,6 @@ class Home extends StatelessWidget {
                       Expanded(child: Container()),
                       ElevatedButton(
                         onPressed: () {
-                          log("Tentou adicionar");
                           GoRouter.of(context).replace(Project.route);
                         },
                         child: Text("Create"),

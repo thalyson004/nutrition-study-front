@@ -1,8 +1,15 @@
+import 'dart:developer';
+
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 
+import 'classes/meal.dart';
+
 class Diet extends StatefulWidget {
-  const Diet({Key? key}) : super(key: key);
+  List<Meal> meals;
+  Function(List<Meal>)? onRemove;
+
+  Diet({super.key, this.meals = const [], this.onRemove});
 
   @override
   State<Diet> createState() => _DietState();
@@ -11,35 +18,57 @@ class Diet extends StatefulWidget {
 class _DietState extends State<Diet> {
   int sortIndex = 1;
   bool isAscending = false;
+  List<Meal> meals = [];
 
   List<DataRow> rows = [];
 
   @override
   void initState() {
+    meals = widget.meals;
     super.initState();
+
+    loadingMeals();
   }
 
-  @override
-  void didChangeDependencies() {
-    if (rows.length == 0) {
-      rows.clear();
-      for (int i = 0; i < 50; i++) {
-        rows.add(
-          DataRow2(
-            cells: <DataCell>[
-              DataCell(Text('Sarah dsas')),
-              DataCell(Text('19')),
-              DataCell(Text('Student')),
-              DataCell(Text('Student')),
-            ],
-          ),
-        );
-      }
-      setState(() {
-        rows = rows;
-      });
+  Future<void> loadingMeals() async {
+    rows.clear();
+    for (Meal meal in meals) {
+      rows.add(
+        DataRow2(
+          cells: <DataCell>[
+            DataCell(Text(meal.name)),
+            DataCell(Text('${(meal.time / 60).toInt()}:${meal.time % 60}')),
+            DataCell(Text('${meal.grams}')),
+            DataCell(ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                backgroundColor: Colors.pink,
+                shadowColor: Colors.black,
+              ),
+              onPressed: () {
+                log(meal.name);
+
+                List<Meal> newMeals = [];
+
+                newMeals = meals.where((el) => el.name != meal.name).toList();
+                print(newMeals);
+                print(meals);
+                setState(() {
+                  meals = newMeals;
+                });
+              },
+              child: Icon(
+                Icons.remove,
+                color: Colors.white,
+              ),
+            )),
+          ],
+        ),
+      );
     }
-    super.didChangeDependencies();
+    // setState(() {
+    //   rows = rows;
+    // });
   }
 
   void onSort(int columnIndex, bool ascending) {

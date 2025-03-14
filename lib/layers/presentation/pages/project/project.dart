@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nutrition_study_front/layers/data/api/nutrition_api.dart';
 
 import '../../widgets/add_meal.dart';
+import '../../widgets/classes/meal.dart';
 import '../../widgets/diet.dart';
 import '../../widgets/my_drop_down_menu.dart';
 import '../../widgets/my_text_input.dart';
@@ -48,11 +49,25 @@ class _ProjectState extends State<Project> {
 
   Map<String, double>? nutrients = <String, double>{};
 
+  List<Meal> meals = [];
+
   @override
   void initState() {
     super.initState();
 
     initVariables();
+  }
+
+  Future<void> loadingMeals() async {
+    List<Meal> newMeals = [
+      Meal("Carne", 567, 890),
+      Meal("Arroz", 567, 890),
+      Meal("Feijão", 567, 890),
+    ];
+
+    setState(() {
+      meals = newMeals;
+    });
   }
 
   Future<void> initVariables() async {
@@ -65,6 +80,8 @@ class _ProjectState extends State<Project> {
         );
       },
     );
+
+    loadingMeals();
     // print(nutrients);
   }
 
@@ -257,7 +274,15 @@ class _ProjectState extends State<Project> {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Expanded(child: Diet()),
+                        Expanded(
+                            child: Diet(
+                          meals: meals,
+                          onRemove: (newMeals) {
+                            setState(() {
+                              meals = newMeals;
+                            });
+                          },
+                        )),
                         SizedBox(
                           height: 50,
                         )
