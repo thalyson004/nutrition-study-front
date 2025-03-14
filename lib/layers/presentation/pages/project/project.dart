@@ -3,9 +3,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition_study_front/layers/data/api/nutrition_api.dart';
+import 'package:nutrition_study_front/layers/presentation/widgets/recommendations.dart';
 
 import '../../widgets/add_meal.dart';
 import '../../widgets/classes/meal.dart';
+import '../../widgets/classes/recommendation.dart';
 import '../../widgets/diet.dart';
 import '../../widgets/my_drop_down_menu.dart';
 import '../../widgets/my_text_input.dart';
@@ -50,6 +52,7 @@ class _ProjectState extends State<Project> {
   Map<String, double>? nutrients = <String, double>{};
 
   List<Meal> meals = [];
+  List<Recommendation> recommendations = [];
 
   @override
   void initState() {
@@ -71,6 +74,19 @@ class _ProjectState extends State<Project> {
     });
   }
 
+  Future<void> loadingRecommendations() async {
+    log("Loading meal into Project...");
+    List<Recommendation> newRecommendations = [
+      Recommendation("Add meat (50)", 5),
+      Recommendation("Add rice (100)", 7),
+      Recommendation("Add Bean (80)", 2),
+    ];
+
+    setState(() {
+      recommendations = newRecommendations;
+    });
+  }
+
   Future<void> initVariables() async {
     NutritionAPI.getNutrientsQuantities().then(
       (ans) {
@@ -83,6 +99,7 @@ class _ProjectState extends State<Project> {
     );
 
     loadingMeals();
+    loadingRecommendations();
     // print(nutrients);
   }
 
@@ -297,7 +314,11 @@ class _ProjectState extends State<Project> {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Expanded(child: Container(color: Colors.green)),
+                        Expanded(
+                          child: Recommendations(
+                            recommendations: recommendations,
+                          ),
+                        ),
                         SizedBox(
                           height: 50,
                           child: Row(
