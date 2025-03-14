@@ -53,6 +53,8 @@ class _ProjectState extends State<Project> {
   List<Meal> meals = [];
   List<Recommendation> recommendations = [];
 
+  double satisfaction = 0.0;
+
   @override
   void initState() {
     super.initState();
@@ -86,6 +88,12 @@ class _ProjectState extends State<Project> {
     });
   }
 
+  Future<void> loadingSatisfaction() async {
+    setState(() {
+      satisfaction = 75.6;
+    });
+  }
+
   Future<void> initVariables() async {
     NutritionAPI.getNutrientsQuantities().then(
       (ans) {
@@ -99,6 +107,7 @@ class _ProjectState extends State<Project> {
 
     loadingMeals();
     loadingRecommendations();
+    loadingSatisfaction();
     // print(nutrients);
   }
 
@@ -218,6 +227,41 @@ class _ProjectState extends State<Project> {
                                 child: NutrientsGraph(
                                   nutrients: nutrients,
                                   nutrientsRecommended: nutrients,
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                      child: Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          SizedBox.square(
+                                            dimension: 112,
+                                            child: CircularProgressIndicator(
+                                              value: satisfaction,
+                                              color: Colors.green,
+                                              strokeWidth: 24.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${satisfaction}%',
+                                            style: const TextStyle(
+                                              fontSize: 28.0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Text(
+                                      "Satisfaction",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               // Tipos satisfação
