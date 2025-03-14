@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'classes/meal.dart';
 
 class Diet extends StatefulWidget {
-  List<Meal> meals;
-  Function(List<Meal>)? onRemove;
+  final List<Meal> meals;
+  final Function(List<Meal>)? onRemove;
 
-  Diet({super.key, this.meals = const [], this.onRemove});
+  const Diet({super.key, this.meals = const [], this.onRemove});
 
   @override
   State<Diet> createState() => _DietState();
@@ -75,7 +75,6 @@ class _DietState extends State<Diet> {
     setState(() {
       sortIndex = columnIndex;
     });
-    print("${columnIndex}, ${ascending}");
     setState(() {
       isAscending = ascending;
     });

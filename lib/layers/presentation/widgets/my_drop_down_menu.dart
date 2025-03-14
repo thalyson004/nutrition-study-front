@@ -6,7 +6,7 @@ class MyDropDownMenu extends StatefulWidget {
   final String? _selectedValue;
   final TextEditingController _controller;
   final List<String> _entries;
-  final _expand;
+  final bool _expand;
 
   const MyDropDownMenu(
       {super.key,

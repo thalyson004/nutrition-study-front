@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'my_drop_down_menu.dart';
@@ -55,18 +54,16 @@ class _AddMealState extends State<AddMeal> {
             labelText: "Quantity",
           ),
         ),
-        Container(
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              shape: const CircleBorder(),
-              backgroundColor: Colors.pink,
-              shadowColor: Colors.black,
-            ),
-            child: const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            backgroundColor: Colors.pink,
+            shadowColor: Colors.black,
+          ),
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
           ),
         ),
       ],

@@ -6,10 +6,11 @@ import 'package:flutter/material.dart';
 import 'classes/recommendation.dart';
 
 class Recommendations extends StatefulWidget {
-  List<Recommendation> recommendations;
-  Function(List<Recommendation>)? onRemove;
+  final List<Recommendation> recommendations;
+  final Function(List<Recommendation>)? onRemove;
 
-  Recommendations({super.key, this.recommendations = const [], this.onRemove});
+  const Recommendations(
+      {super.key, this.recommendations = const [], this.onRemove});
 
   @override
   State<Recommendations> createState() => _RecommendationsState();
@@ -77,7 +78,7 @@ class _RecommendationsState extends State<Recommendations> {
     setState(() {
       sortIndex = columnIndex;
     });
-    print("${columnIndex}, ${ascending}");
+
     setState(() {
       isAscending = ascending;
     });
