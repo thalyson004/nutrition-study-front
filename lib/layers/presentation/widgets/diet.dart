@@ -32,6 +32,7 @@ class _DietState extends State<Diet> {
 
   Future<void> loadingMeals() async {
     rows.clear();
+
     for (Meal meal in meals) {
       rows.add(
         DataRow2(
@@ -51,11 +52,10 @@ class _DietState extends State<Diet> {
                 List<Meal> newMeals = [];
 
                 newMeals = meals.where((el) => el.name != meal.name).toList();
-                print(newMeals);
-                print(meals);
-                setState(() {
-                  meals = newMeals;
-                });
+
+                meals = newMeals;
+
+                loadingMeals();
               },
               child: Icon(
                 Icons.remove,
@@ -66,9 +66,9 @@ class _DietState extends State<Diet> {
         ),
       );
     }
-    // setState(() {
-    //   rows = rows;
-    // });
+    setState(() {
+      rows = rows;
+    });
   }
 
   void onSort(int columnIndex, bool ascending) {
@@ -79,6 +79,12 @@ class _DietState extends State<Diet> {
     setState(() {
       isAscending = ascending;
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    loadingMeals();
+    super.didChangeDependencies();
   }
 
   @override

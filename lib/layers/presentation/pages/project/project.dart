@@ -59,6 +59,7 @@ class _ProjectState extends State<Project> {
   }
 
   Future<void> loadingMeals() async {
+    log("Loading meal into Project...");
     List<Meal> newMeals = [
       Meal("Carne", 567, 890),
       Meal("Arroz", 567, 890),
